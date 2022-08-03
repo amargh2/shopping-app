@@ -4,6 +4,7 @@ import Header from './components/Header';
 import NavBar from './components/NavBar';
 import ProductDisplay from './components/ProductDisplay';
 import SideBar from './components/SideBar';
+import Cart from './components/Cart'
 
 function App() {
   const [inventory, setInventory] = useState([
@@ -36,6 +37,16 @@ function App() {
       {name: 'Rose Quartz',
       price: 15}
   ])
+
+  const [cart, setCart] = useState([
+    {name:'herp',
+     price: 24},
+    {name: "and i can't stress this enough:",
+    price: 20},
+    {name: 'derp',
+    price: 10}
+  ])
+
   
   return (
     <div className= 'lg:grid-rows-10 lg:grid lg:grid-cols-10 gap-2 sm:flex flex-col md:grid md:grid-cols-3'> 

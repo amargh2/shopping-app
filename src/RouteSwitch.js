@@ -6,13 +6,14 @@ import ProductDisplay from './components/ProductDisplay';
 import SideBar from './components/SideBar';
 import HomePage from './components/HomePage';
 import Cart from './components/Cart'
+import Shop from './components/Shop'
 
 const RouteSwitch = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage/>} />
-        <Route path='shop' element={<App/>} />
+        <Route path='shop' element={<Shop/>} />
         <Route path='cart' element={<Cart/>}/>
       </Routes>
     </BrowserRouter>

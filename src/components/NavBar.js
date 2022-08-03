@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Navigate, Outlet } from 'react-router-dom'
 
-const navBar = () => {
+const navBar = (props) => {
   return(
     <div className='flex justify-center'>
       <div className='py-2 flex justify-center'>

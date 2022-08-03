@@ -1,10 +1,12 @@
 import React from 'react';
+import App from '../App';
 
 const ProductDisplay = (props) => {
-  const products = ['dummy string', 'dummy string2', 'dummy string3', 'dummy4', 'dummy5', 'dummy6']
   const products2 = props.products
-  const listTheProducts = (products) => {
-    const processedItems = products.map(product => {
+  console.log(products2)
+  console.log(products2[0].id)
+  const listTheProducts = (products2) => {
+    const processedItems = products2.map(product => {
       return (
       <div className='border-2 border-yellow-400 rounded-lg flex justify-center py-2'>
         <div className = 'flex-col font-semibold gap-2 shadow-lg rounded-lg'>
@@ -13,7 +15,8 @@ const ProductDisplay = (props) => {
           <div>
             <button 
               className='flex px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs' 
-              onClick={()=>console.log('added to cart inv will -1, cart will+1 item')}>
+              id = {product.id}
+              onClick={(event)=> {props.clickHandler(props.products , event.target.id)}}>
                 Add to Cart
             </button>
           </div>
@@ -25,9 +28,9 @@ const ProductDisplay = (props) => {
   }
 
   return (
-    <div className = 'lg:grid lg:grid-cols-4 md:flex-col sm:flex sm:flex-col'>
-      {listTheProducts(products2)}
-    </div>
+      <div className = 'lg:grid lg:grid-cols-4 md:flex-col sm:flex sm:flex-col gap-4'>
+        {listTheProducts(products2)}
+      </div>
   )
 }
 
