@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 const SideBar = () => {
-  const menuButton = (<button className='px-5 py-2 bg-cyan-400'>+</button>)
+  const menuButton = (<button className='px-5 py-2 hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400'>+</button>)
   const menu = (<></>)
 
   return (
