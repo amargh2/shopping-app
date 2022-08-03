@@ -6,7 +6,7 @@ const ProductDisplay = (props) => {
   const listTheProducts = (products) => {
     const processedItems = products.map(product => {
       return (
-      <div className='border-2 border-yellow-400 rounded-lg flex justify-center'>
+      <div className='border-2 border-yellow-400 rounded-lg flex justify-center py-2'>
         <div className = 'flex-col font-semibold gap-2 shadow-lg rounded-lg'>
           <div>{product.name}</div>
           <div>${product.price}</div>
