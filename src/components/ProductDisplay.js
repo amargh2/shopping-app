@@ -9,7 +9,7 @@ const ProductDisplay = (props) => {
       <div className='border-2 hover:border-2 hover:border-yellow-200 shadow-lg rounded-lg flex shadow-indigo-400 justify-center py-2'>
         <div className = 'flex-col px-2 py-2 font-semibold gap-2 rounded-lg'>
           <div>
-            <img className='rounded' src={product.imgSrc}></img>
+            <img className='rounded' src={product.imgSrc} alt='info'></img>
           </div>
           <div className='flex-col justify-center'>
             <div className='flex justify-center'>{product.name}</div>

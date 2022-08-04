@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid'
 
 const Root = () => {
+  //defining inventory (could probably export this somewhere)
   const [inventory, setInventory] = useState([
     {name: 'Amethyst',
      price: 50,
@@ -65,7 +66,7 @@ const Root = () => {
       id:'9',
       imgSrc:'images/tigerseye.jpg'}
   ])
-
+  //item sorter for sidebar
   const sortItemsByPrice = (choice) => {
     let newInventoryArray 
     if (choice === 'high-to-low') {
@@ -84,16 +85,18 @@ const Root = () => {
       setInventory(newInventoryArray)
 
     }
-    console.log(newInventoryArray)
     return
   }
-
+  //setting total state, passed to Cart
   const [cartTotal, updateTotal] = useState(0)
 
+  //setting Cart state (array of items)
   const [cart, updateCart] = useState(
     []
   );
-
+  
+  //click listener that updates cart when item is added from shop
+  //passed to Shop
   const addToCartHandler = (inventory, id) => {
     console.log(inventory, id)
     const newCart = cart.map(element => element);
@@ -110,7 +113,7 @@ const Root = () => {
       console.log(cart)
     })
   }
-
+  //deletes item from cart (passed to Cart)
   const removeFromCartHandler = (id) => {
     const newCart = cart.map(element => element);
     inventory.forEach(item => {
@@ -124,6 +127,7 @@ const Root = () => {
   }
 
   return (
+  //routing
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage/>} />

@@ -7,7 +7,10 @@ import {Link, Outlet} from 'react-router-dom'
 
 const Cart = (props) => {
   const total = props.total
-  
+  //cart display iterates through the cart items and displays the items on cards
+  //it also takes the total, lists the items succinctly, 
+  //and offers checkout/keep shopping option
+  //it takes both these items and populates them in a two-column grid
   const cartDisplay = () => {
     const manipulableCart = props.cartItems.map(item => item)
     const displayCartItems = manipulableCart.map(item => {
@@ -38,10 +41,11 @@ const Cart = (props) => {
       </div>)
     }
 
+  //checks the cart -- if empty, tells the user to go add items to their cart
   function chooseOutput() {
     let emptyOrFull
     if (props.total === 0) {
-      emptyOrFull = (<div className = 'flex justify-center'>Your cart is currently empty! Buy some dang crystals!</div>)
+      emptyOrFull = (<div className = 'flex justify-center'>Your cart is currently empty! Visit the shop and add some items to your cart!</div>)
     } if (total !== 0) {
       emptyOrFull = cartDisplay()
       }  return (
