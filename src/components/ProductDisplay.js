@@ -3,22 +3,25 @@ import App from '../App';
 
 const ProductDisplay = (props) => {
   const products2 = props.products
-  console.log(products2)
-  console.log(products2[0].id)
-  const listTheProducts = (products2) => {
+  const listTheProducts = () => {
     const processedItems = products2.map(product => {
       return (
-      <div className='border-2 border-yellow-400 rounded-lg flex justify-center py-2'>
-        <div className = 'flex-col font-semibold gap-2 shadow-lg rounded-lg'>
-          <div>{product.name}</div>
-          <div>${product.price}</div>
+      <div className='border-2 hover:border-2 hover:border-yellow-200 shadow-lg rounded-lg flex shadow-indigo-400 justify-center py-2'>
+        <div className = 'flex-col px-2 py-2 font-semibold gap-2 rounded-lg'>
           <div>
-            <button 
-              className='flex px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs' 
-              id = {product.id}
-              onClick={(event)=> {props.clickHandler(props.products , event.target.id)}}>
-                Add to Cart
-            </button>
+            <img className='rounded' src={product.imgSrc}></img>
+          </div>
+          <div className='flex-col justify-center'>
+            <div className='flex justify-center'>{product.name}</div>
+            <div className='flex justify-center'>${product.price}</div>
+            <div className ='flex justify-center'>
+              <button
+                className='flex px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs'
+                id = {product.id}
+                onClick={(event)=> {props.clickHandler(props.products , event.target.id)}}>
+                  Add to Cart
+              </button>
+          </div>
           </div>
         </div>
       </div>
