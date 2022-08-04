@@ -7,6 +7,9 @@ import {Link, Outlet} from 'react-router-dom'
 
 const Cart = (props) => {
   const total = props.total
+  const cart = props.cartItems
+
+  
   //cart display iterates through the cart items and displays the items on cards
   //it also takes the total, lists the items succinctly, 
   //and offers checkout/keep shopping option

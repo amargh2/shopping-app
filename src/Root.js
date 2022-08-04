@@ -16,55 +16,65 @@ const Root = () => {
     {name: 'Amethyst',
      price: 50,
      id: '1',
-     imgSrc: `images/amethyst.jpg`
+     imgSrc: `images/amethyst.jpg`,
+     numberInCart:0
+     //stock could go here
     },
     
     {name: "Tiger's Eye",
      price: 25,
      id: '2',
-     imgSrc:`images/tigerseye.jpg`
+     imgSrc:`images/tigerseye.jpg`,
+     numberInCart:0
     },
     
     {name: 'Tourmeline',
      price: 40,
      id: '3',
-     imgSrc: `images/tourmaline.jpg`
+     imgSrc: `images/tourmaline.jpg`,
+     numberInCart:0,
     },
     
      {name: 'Jade',
      price: 30,
      id: '4',
-     imgSrc:`images/jade.jpg`
+     imgSrc:`images/jade.jpg`,
+     numberInCart:0
     },
     
     {name: 'Onyx',
      price: 25,
      id: '5',
-     imgSrc:`images/tigerseye.jpg`
+     imgSrc:`images/tigerseye.jpg`,
+     numberInCart:0
     },
     
     {name: 'Garnet',
      price: 25,
      id: '6',
-     imgSrc:`images/amethyst.jpg`
+     imgSrc:`images/amethyst.jpg`,
+     numberInCart:0
     },
 
       {name: "Je ne ce'st pas",
       price: 10,
       id: '7',
-      imgSrc:`images/tigerseye.jpg`
+      imgSrc:`images/tigerseye.jpg`,
+      numberInCart:0
       },
 
       {name: 'Garnet',
       price: 25,
       id: '8',
-      imgSrc:`images/tigerseye.jpg`
+      imgSrc:`images/tigerseye.jpg`,
+      numberInCart:0
       },
 
       {name: 'Rose Quartz',
       price: 15,
       id:'9',
-      imgSrc:'images/tigerseye.jpg'}
+      imgSrc:'images/tigerseye.jpg',
+      numberInCart:0}
   ])
   //item sorter for sidebar
   const sortItemsByPrice = (choice) => {
@@ -95,24 +105,40 @@ const Root = () => {
     []
   );
   
-  //click listener that updates cart when item is added from shop
+  //click listener that updates cart and inv when item is added to cart from Shop
   //passed to Shop
+  
+  const updateInventoryWithCartCount = (id) => {
+    const newInv = inventory.map(item => {
+      if (item.id === id) {
+        item.numberInCart ++;
+        console.log(item.name)
+      }
+      return item
+    })
+    console.log(newInv)
+    return newInv
+  }
+  
   const addToCartHandler = (inventory, id) => {
     console.log(inventory, id)
+    
     const newCart = cart.map(element => element);
     inventory.forEach(item => {
       if (item.id === id){
-      item.cartId = uniqid()
-      newCart.push(item)
-      updateCart(
-        newCart
-      )
-      const newTotal = cartTotal + item.price
-      updateTotal(newTotal)
-    }
-      console.log(cart)
+        item.cartId = uniqid()
+        newCart.push(item)
+        updateCart(
+          newCart
+        )
+        const newTotal = cartTotal + item.price
+        updateTotal(newTotal)
+        setInventory(updateInventoryWithCartCount(id))
+      }
     })
   }
+
+
   //deletes item from cart (passed to Cart)
   const removeFromCartHandler = (id) => {
     const newCart = cart.map(element => element);
@@ -125,7 +151,7 @@ const Root = () => {
       }
     })
   }
-
+  
   return (
   //routing
   <BrowserRouter>
