@@ -74,8 +74,22 @@ const Root = () => {
       price: 15,
       id:'9',
       imgSrc:'images/tigerseye.jpg',
-      numberInCart:0}
+      numberInCart:0,
+    }
   ])
+  
+  function getQuantities() {
+    const quants = [];
+    inventory.forEach(item => {
+      if(item.numberInCart > 0) {
+        quants.push([item.name, item.price, item.numberInCart])
+      }  
+    })
+    return quants
+  }
+
+  const [quantities, setQuantities] = useState([])
+  
   //item sorter for sidebar
   const sortItemsByPrice = (choice) => {
     let newInventoryArray 
@@ -97,6 +111,7 @@ const Root = () => {
     }
     return
   }
+  
   //setting total state, passed to Cart
   const [cartTotal, updateTotal] = useState(0)
 
@@ -134,6 +149,7 @@ const Root = () => {
         const newTotal = cartTotal + item.price
         updateTotal(newTotal)
         setInventory(updateInventoryWithCartCount(id))
+        setQuantities(getQuantities())
       }
     })
   }
@@ -142,14 +158,18 @@ const Root = () => {
   //deletes item from cart (passed to Cart)
   const removeFromCartHandler = (id) => {
     const newCart = cart.map(element => element);
-    inventory.forEach(item => {
+    const newInventory = inventory.map(item => item)
+    newInventory.forEach(item => {
       if (item.cartId === id) {
         const index = newCart.indexOf(item)
         newCart.splice(index, 1)
         updateCart(newCart)
         updateTotal(cartTotal - item.price)
+        item.numberInCart = item.numberInCart - 1
       }
     })
+    setInventory(newInventory)
+    setQuantities(getQuantities())
   }
   
   return (
@@ -158,7 +178,7 @@ const Root = () => {
     <Routes>
       <Route path='/' element={<HomePage/>} />
       <Route path='shop' element={<Shop inventory = {inventory} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
-      <Route path='cart' element={<Cart total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} cartItems={cart}/>}/>
+      <Route path='cart' element={<Cart total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} cartItems={cart} quantities={quantities}/>}/>
     </Routes>
   </BrowserRouter>
   )
