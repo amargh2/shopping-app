@@ -78,18 +78,6 @@ const Root = () => {
     }
   ])
   
-  function getQuantities() {
-    const quants = [];
-    inventory.forEach(item => {
-      if(item.numberInCart > 0) {
-        quants.push([item.name, item.price, item.numberInCart])
-      }  
-    })
-    return quants
-  }
-
-  const [quantities, setQuantities] = useState([])
-  
   //item sorter for sidebar
   const sortItemsByPrice = (choice) => {
     let newInventoryArray 
@@ -120,52 +108,29 @@ const Root = () => {
     []
   );
   
-  //click listener that updates cart and inv when item is added to cart from Shop
-  //passed to Shop
   
-  const updateInventoryWithCartCount = (id) => {
-    const newInv = inventory.map(item => {
-      if (item.id === id) {
-        item.numberInCart ++;
-        console.log(item.name)
-      }
-      return item
-    })
-    console.log(newInv)
-    return newInv
-  }
-  
-  const addToCartHandler = (inventory, id) => {
-    console.log(inventory, id)
+  const addToCartHandler = (id) => {
+    const newInventory = inventory.map(item=>item);
     
-    const newCart = cart.map(element => element);
-    inventory.forEach(item => {
+    newInventory.forEach(item => {
       if (item.id === id){
-        item.cartId = uniqid()
-        newCart.push(item)
-        updateCart(
-          newCart
-        )
         const newTotal = cartTotal + item.price
         updateTotal(newTotal)
-        setInventory(updateInventoryWithCartCount(id))
-        setQuantities(getQuantities())
+        item.numberInCart = item.numberInCart+1
       }
+      setInventory(newInventory)
     })
   }
 
 
   //deletes item from cart (passed to Cart)
   const removeFromCartHandler = (id) => {
-    const newCart = cart.map(element => element);
     const newInventory = inventory.map(item => item)
     newInventory.forEach(item => {
       if (item.id === id) {
-        const index = newCart.indexOf(item)
-        newCart.splice(index, 1)
-        updateCart(newCart)
-        updateTotal(cartTotal - item.price)
         item.numberInCart = item.numberInCart - 1
+        const newTotal = cartTotal - item.price
+        updateTotal(newTotal)
       }
     })
     setInventory(newInventory)
@@ -176,8 +141,8 @@ const Root = () => {
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage/>} />
-      <Route path='shop' element={<Shop inventory = {inventory} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
-      <Route path='cart' element={<Cart total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} cartItems={cart} quantities={quantities}/>}/>
+      <Route path='shop' element={<Shop total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
+      <Route path='cart' element={<Cart total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
     </Routes>
   </BrowserRouter>
   )

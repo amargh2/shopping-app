@@ -6,25 +6,20 @@ const ProductDisplay = (props) => {
   const listTheProducts = () => {
     const processedItems = products2.map(product => {
       return (
-      <div className='border-2 hover:border-2 hover:border-yellow-200 shadow-lg rounded-lg flex shadow-indigo-400 justify-center py-2'>
-        <div className = 'flex-col px-2 py-2 font-semibold gap-2 rounded-lg'>
-          <div>
-            <img className='rounded' src={product.imgSrc} alt='info'></img>
-          </div>
-          <div className='flex-col justify-center'>
-            <div className='flex justify-center'>{product.name}</div>
-            <div className='flex justify-center'>${product.price}</div>
-            <div className ='flex justify-center'>
-              <button
-                className='flex px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs'
-                id = {product.id}
-                onClick={(event)=> {props.clickHandler(props.products , event.target.id)}}>
-                  Add to Cart
-              </button>
-          </div>
+        <div className = 'justify-center align-middle hover:border-2 hover:border-indigo-400 shadow-lg shadow-indigo-400 py-2 font-semibold gap-2 rounded-lg'>
+          <div className='flex justify-center'><img className='rounded w-2/3 h-1/2' src={product.imgSrc} alt='product'></img></div>
+          <div className ='flex justify-center'>{product.name}</div>
+          <div className='flex justify-center'>${product.price}</div>
+          <div className='flex justify-center'>{product.numberInCart}</div>
+          <div className='flex justify-center'>
+            <button
+                  className='flex justify-center place-self-bottom px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs'
+                  id = {product.id}
+                  onClick={(event)=> {props.clickHandler(event.target.id)}}>
+                    Add to Cart
+                </button>
           </div>
         </div>
-      </div>
       )
     })
     return processedItems
