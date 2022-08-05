@@ -160,7 +160,7 @@ const Root = () => {
     const newCart = cart.map(element => element);
     const newInventory = inventory.map(item => item)
     newInventory.forEach(item => {
-      if (item.cartId === id) {
+      if (item.id === id) {
         const index = newCart.indexOf(item)
         newCart.splice(index, 1)
         updateCart(newCart)
@@ -169,7 +169,6 @@ const Root = () => {
       }
     })
     setInventory(newInventory)
-    setQuantities(getQuantities())
   }
   
   return (
