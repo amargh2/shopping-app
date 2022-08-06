@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
-import Header from './components/Header';
-import NavBar from './components/NavBar';
-import ProductDisplay from './components/ProductDisplay';
+import Header from './components/PageComponents/Header';
+import NavBar from './components/PageComponents/NavBar';
+import ProductDisplay from './components/ShopComponents/ProductDisplay';
 import SideBar from './components/SideBar';
-import HomePage from './components/HomePage';
-import Cart from './components/Cart'
-import Shop from './components/Shop'
+import HomePage from './components/PageComponents/HomePage';
+import Cart from './components/CartComponents/Cart'
+import Shop from './components/ShopComponents/Shop'
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid'
 
@@ -78,7 +78,7 @@ const Root = () => {
     }
   ])
   
-  //item sorter for sidebar
+  //item sorter for sidebar component (in /PageComponents)
   const sortItemsByPrice = (choice) => {
     let newInventoryArray 
     if (choice === 'high-to-low') {
@@ -102,11 +102,6 @@ const Root = () => {
   
   //setting total state, passed to Cart
   const [cartTotal, updateTotal] = useState(0)
-
-  //setting Cart state (array of items)
-  const [cart, updateCart] = useState(
-    []
-  );
   
   
   const addToCartHandler = (id) => {

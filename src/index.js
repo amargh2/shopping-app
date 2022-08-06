@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import RouteSwitch from './RouteSwitch'
 import App from './App';
 import Root from './Root';
 

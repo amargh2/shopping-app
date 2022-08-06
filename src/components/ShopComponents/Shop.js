@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import App from '../App';
-import Header from './Header';
-import NavBar from './NavBar'
+import App from '../../App';
+import Header from '../PageComponents/Header';
+import NavBar from '../PageComponents/NavBar'
 import ProductDisplay from './ProductDisplay';
-import SideBar from './SideBar'
-import Cart from './Cart';
+import SideBar from '../SideBar'
+import Cart from '../CartComponents/Cart';
+import CartSidePanel from './CartSidePanel';
 import { Outlet } from 'react-router-dom'
-
+import ShowItemsInCart from '../CartComponents/makeCartItemCards';
+import CartSidePanel2 from './cartSidePanel2';
 const Shop = (props) => {
   
   return (
@@ -18,13 +20,13 @@ const Shop = (props) => {
       <SideBar 
       sortItemsByPrice = {props.sort}/>
     </div>
-    <div className='gap-4 col-start-4 lg:col-span-6 lg:row-span-7 md:col-span-2'>
+    <div className='gap-4 col-start-4 lg:col-span-7 lg:row-span-7 md:col-span-2'>
       <ProductDisplay 
       products = {props.inventory} 
       updateInventory = {props.setInventory} 
       clickHandler = {props.clickHandler} /></div>
-    <div className='flex'>
-      <Cart total={props.cartTotal} inventory={props.inventory} removeFromCart={props.removeFromCartHandler} addToCart={props.addToCartHandler}/>
+    <div className='col-start-9 col-span-2'>
+      <CartSidePanel2 total={props.total} removeFromCart={props.removeFromCart} inventory={props.inventory} addToCart={props.addToCartHandler}/>
     </div>
   </div>
 </div>

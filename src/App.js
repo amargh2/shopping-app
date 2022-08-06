@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
-import Header from './components/Header';
-import NavBar from './components/NavBar';
-import ProductDisplay from './components/ProductDisplay';
+import Header from './components/PageComponents/Header';
+import NavBar from './components/PageComponents/NavBar';
+import ProductDisplay from './components/ShopComponents/ProductDisplay';
 import SideBar from './components/SideBar';
-import Cart from './components/Cart'
+import Cart from './components/CartComponents/Cart'
 
 function App() {
   const [inventory, setInventory] = useState([

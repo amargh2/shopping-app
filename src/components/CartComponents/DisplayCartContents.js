@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const cartDisplay = (props) => {
   const manipulableInventory = props.inventory.map(element => element);
   const itemCards = () => manipulableInventory.map(element => {
