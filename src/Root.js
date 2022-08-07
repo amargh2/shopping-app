@@ -88,14 +88,19 @@ const Root = () => {
       })
       setInventory(newInventoryArray)
 
-    } 
-    if (choice === 'low-to-high') {
+    } if (choice === 'low-to-high') {
       const newInventoryArray = inventory.map(item => item);
       newInventoryArray.sort((a, b) => {
         return a.price - b.price
       })
       setInventory(newInventoryArray)
-
+    } if (choice === 'alphabetical') {
+      const newInventoryArray = inventory.map(item=>item);
+      newInventoryArray.sort((a, b) => {
+        return a.name - b.name
+      })
+      console.log(newInventoryArray)
+      setInventory(newInventoryArray)
     }
     return
   }

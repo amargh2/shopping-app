@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MakeCartItemCards = (props) => {
+const MakeCartItemCardsForCart = (props) => {
   const manipulableInventory = props.inventory.map(element=>element)
   let itemCards =[]
   manipulableInventory.map(element => {
@@ -17,7 +17,7 @@ const MakeCartItemCards = (props) => {
   </div>)
   }
 })
-  return (<div className='flex flex-col gap-2'>{itemCards}</div>)
+  return (<div className='flex flex-col justify-center gap-2'>{itemCards}</div>)
 }
 
-export default MakeCartItemCards
+export default MakeCartItemCardsForCart

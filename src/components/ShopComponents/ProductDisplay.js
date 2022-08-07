@@ -1,5 +1,4 @@
 import React from 'react';
-import App from '../../App';
 
 const ProductDisplay = (props) => {
   const products2 = props.products
@@ -25,7 +24,7 @@ const ProductDisplay = (props) => {
   }
 
   return (
-      <div className = 'lg:grid lg:grid-cols-4 md:flex-col sm:flex sm:flex-col gap-4'>
+      <div className = 'grid lg:grid-cols-4 gap-4'>
         {listTheProducts(products2)}
       </div>
   )
