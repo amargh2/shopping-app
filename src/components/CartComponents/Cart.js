@@ -3,7 +3,6 @@ import Header from '../PageComponents/Header'
 import NavBar from '../PageComponents/NavBar'
 import MakeCartItemCards from './makeCartItemCards'
 import TotalDisplay from './TotalDisplay'
-import {Link} from 'react-router-dom'
 
 const Cart = (props) => {
   //checks the cart -- if empty, tells the user to go add items to their cart

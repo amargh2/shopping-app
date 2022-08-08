@@ -2,7 +2,7 @@ import React from 'react';
 import ItemCardsForCartPanel from './itemCardsForCartPanel.js';
 import TotalDisplay from '../CartComponents/TotalDisplay';
 import { ShoppingCartIcon } from '@heroicons/react/outline';
-
+import CartPanelTotalDisplay from './CartPanelTotalDisplay.js';
 export default function CartSidePanel2(props){ 
   return (  
   <div className='px-4 flex justify-center rounded-lg py-4'>
@@ -12,9 +12,13 @@ export default function CartSidePanel2(props){
           <h1><ShoppingCartIcon className='h-8 w-8'/></h1>
         </button>
       </div>
-      <div className='grid grid-cols-6'>
-      <div className='col-start-2 col-span-4'><TotalDisplay total={props.total} inventory={props.inventory} removeFromCart={props.removeFromCart} addToCart={props.addToCart}/></div>
-      <div className='row-start-2 col-span-full'><ItemCardsForCartPanel total={props.total} inventory={props.inventory} removeFromCart={props.removeFromCart} addToCart={props.addToCart}/></div>
+      <div className='grid grid-cols-6 gap-4'>
+        <div className='col-start-2 col-span-4'>
+          <CartPanelTotalDisplay total={props.total} inventory={props.inventory} removeFromCart={props.removeFromCart} addToCart={props.addToCart}/>
+        </div>
+        <div className='row-start-2 col-span-full'>
+          <ItemCardsForCartPanel total={props.total} inventory={props.inventory} removeFromCart={props.removeFromCart} addToCart={props.addToCart}/>
+        </div>
     </div>
   </div>
   </div>

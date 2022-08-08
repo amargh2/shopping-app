@@ -1,4 +1,5 @@
 import React from 'react';
+import SelectQuantity from './QuantitySelector';
 
 const ProductDisplay = (props) => {
   const products2 = props.products
@@ -9,13 +10,14 @@ const ProductDisplay = (props) => {
           <div className='flex justify-center'><img className='rounded h-40 w-52 object-contain' src={product.imgSrc} alt='product'></img></div>
           <div className ='flex justify-center'>{product.name}</div>
           <div className='flex justify-center'>${product.price}</div>
-          <div className='flex justify-center'>
+          <div className='flex gap-4 justify-center align-center'>
+            <div className='w-20'><SelectQuantity/></div>
             <button
-                  className='flex justify-center place-self-bottom px-5 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs'
-                  id = {product.id}
-                  onClick={(event)=> {props.clickHandler(event.target.id)}}>
-                    Add to Cart
-                </button>
+              className='flex align-middle px-2 py-2 text-white font-semibold hover:ring-2 hover:ring-yellow-400 rounded-lg bg-cyan-400 text-xs'
+              id = {product.id}
+              onClick={(event)=> {props.clickHandler(event.target.id)}}>
+                Add to Cart
+            </button>
           </div>
         </div>
       )
@@ -24,7 +26,7 @@ const ProductDisplay = (props) => {
   }
 
   return (
-      <div className = 'grid lg:grid-cols-4 gap-4'>
+      <div className = 'grid lg:grid-cols-4 grid-cols-2 gap-4'>
         {listTheProducts(products2)}
       </div>
   )

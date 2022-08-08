@@ -3,7 +3,7 @@ import { Link, Navigate, Outlet } from 'react-router-dom'
 
 const navBar = (props) => {
   return(
-    <div className='flex justify-center shadow-lg'>
+    <div className='shadow-lg'>
       <div className='py-2 flex justify-center'>
         <div className='px-2'>
           <Link to='/'> 

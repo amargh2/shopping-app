@@ -1,12 +1,13 @@
 import React from 'react'
+import SelectQuantity from './QuantitySelector'
 
 const MakeCartItemCardsForCartPanel = (props) => {
   const manipulableInventory = props.inventory.map(element=>element)
   let itemCards =[]
   manipulableInventory.map(element => {
   if (element.numberInCart > 0) {
-    itemCards.push(<div className = 'hover:border-2 hover:border-indigo-400 border-2 justify-center flex flex-col shadow-lg shadow-indigo-400 py-2 font-semibold gap-2 rounded-lg'>
-    <div className='flex justify-center'><img className='rounded h-1/2 w-2/3' src={element.imgSrc} alt='product'></img></div>
+    itemCards.push(<div className = 'hover:border-2 hover:border-indigo-400 border-2 justify-center flex flex-col shadow-lg shadow-indigo-400 px-2 py-2 font-semibold gap-2 rounded-lg'>
+    <div className='flex justify-center'><img className='rounded h-40 w-40' src={element.imgSrc} alt='product'></img></div>
     <div className="flex justify-evenly">
       <div className ='flex justify-center'>{element.name}</div>
       <div className='flex justify-center'>${element.price}</div>
@@ -19,7 +20,7 @@ const MakeCartItemCardsForCartPanel = (props) => {
   </div>)
   }
 })
-  return (<div className='flex lg:px-10 flex-col justify-center'>{itemCards}</div>)
+  return (<div className='lg:px-10 justify-center'>{itemCards}</div>)
 }
 
 export default MakeCartItemCardsForCartPanel
