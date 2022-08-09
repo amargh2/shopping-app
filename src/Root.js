@@ -89,6 +89,14 @@ const Root = () => {
     }
   ])
 
+  const cartItemCount = () => {
+    let total = 0;
+    inventory.forEach(item => {
+      total = total + item.numberInCart
+    })
+    return total
+  }
+
   const qtyHandler = (id, value) => {
     const newInventory = inventory.map(item => item);
     newInventory.forEach(item => {
@@ -194,9 +202,9 @@ const Root = () => {
   //routing
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<HomePage/>} />
-      <Route path='shop' element={<Shop addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} qtyHandler={qtyHandler} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
-      <Route path='cart' element={<Cart addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
+      <Route path='/' element={<HomePage cartItemCount = {cartItemCount}/>} />
+      <Route path='shop' element={<Shop cartItemCount={cartItemCount} addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} qtyHandler={qtyHandler} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
+      <Route path='cart' element={<Cart cartItemCount={cartItemCount} addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
     </Routes>
   </BrowserRouter>
   )
