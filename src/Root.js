@@ -117,12 +117,17 @@ const Root = () => {
         return a.price - b.price
       })
       setInventory(newInventoryArray)
-    } if (choice === 'alphabetical') {
+    } if (choice === 'alphabetical a-z') {
       const newInventoryArray = inventory.map(item=>item);
       newInventoryArray.sort((a, b) => {
-        return a.name - b.name
+        return a.name.localeCompare(b.name)
       })
-      console.log(newInventoryArray)
+      setInventory(newInventoryArray)
+    } if (choice==='alphabetical z-a') {
+      const newInventoryArray = inventory.map(item=>item);
+      newInventoryArray.sort((a,b) => {
+        return b.name.localeCompare(a.name)
+      })
       setInventory(newInventoryArray)
     }
     return

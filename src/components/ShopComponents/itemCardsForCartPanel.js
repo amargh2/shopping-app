@@ -13,9 +13,7 @@ const MakeCartItemCardsForCartPanel = (props) => {
       <div className = 'hover:border-2 hover:border-indigo-400 border-2 justify-center flex flex-col shadow-lg shadow-indigo-400 px-2 py-2 font-semibold gap-2 rounded-lg'>
       <div className='flex justify-center'><img className='rounded h-40 w-40' src={element.imgSrc} alt='product'></img></div>
       <div className="flex flex-col justify-evenly">
-        <div className ='flex justify-center'>{element.name}x{element.numberIncart}, ${element.price} each</div>
-      
-        <div className='flex justify-center'>{element.numberInCart}</div>
+        <div className ='flex justify-center'>{element.name} x {element.numberInCart}, ${element.price} each</div>
         <div className='flex gap-2 justify-center'>
           <button id={element.id}
           onClick={() => props.removeFromCart(element.id)}
