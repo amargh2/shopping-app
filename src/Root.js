@@ -1,15 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
-import Header from './components/PageComponents/Header';
-import NavBar from './components/PageComponents/NavBar';
-import ProductDisplay from './components/ShopComponents/ProductDisplay';
-import SideBar from './components/SideBar';
 import HomePage from './components/PageComponents/HomePage';
 import Cart from './components/CartComponents/Cart'
 import Shop from './components/ShopComponents/Shop'
 import React, { useState, useEffect } from 'react';
-import uniqid from 'uniqid'
-
+import CheckoutPage from './components/CheckoutPageComponents/CheckoutPage';
 const Root = () => {  
   const cleanInventory = [
     {name: 'Amethyst',
@@ -209,7 +203,8 @@ const Root = () => {
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage cartItemCount = {cartItemCount}/>} />
-      <Route path='shop' element={<Shop 
+      <Route path='shop' element={
+      <Shop 
         cartItemCount={cartItemCount} 
         addOne={addOneMoreItem} 
         removeAllOfSame={removeAllOfSameItem} 
@@ -230,6 +225,18 @@ const Root = () => {
         inventory={inventory} 
         removeFromCart={removeFromCartHandler} 
         addToCart={addToCartHandler}/>} />
+      <Route path='checkout'
+      element={
+      <CheckoutPage cartItemCount={cartItemCount} 
+        addOne={addOneMoreItem} 
+        removeAllOfSame={removeAllOfSameItem} 
+        total={cartTotal} inventory={inventory} 
+        qtyHandler={qtyHandler} 
+        removeFromCart={removeFromCartHandler} 
+        addToCart={addToCartHandler} 
+        clickHandler = {addToCartHandler} 
+        sort = {sortItemsByPrice}
+        emptyCart={emptyCart}/>}/>
     </Routes>
   </BrowserRouter>
   )

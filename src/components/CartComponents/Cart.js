@@ -11,7 +11,7 @@ const Cart = (props) => {
         return (<div className = 'flex justify-center py-10 font-medium'>Your cart is currently empty! Visit the shop and add some items to your cart!</div>)
       } if (props.total !== 0) {
         return(
-        <div className='grid sm:grid-cols-2 lg:grid-cols-10 py-10'>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-10 py-10 px-2'>
           <div className='col-start-3 col-span-3'>
             <MakeCartItemCards
             inventory={props.inventory}

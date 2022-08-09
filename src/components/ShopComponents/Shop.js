@@ -17,14 +17,21 @@ const Shop = (props) => {
           <SortButton
           sort = {props.sort}/>
         </div>
-        <div className='lg:col-span-7 md:col-span-6 col-span-3 lg:px-0 py-2 px-10'>
+        <div className='lg:col-span-7 md:col-span-6 col-span-2 lg:px-0 py-2'>
           <ProductDisplay
           products = {props.inventory}
           updateInventory = {props.setInventory}
           clickHandler = {props.clickHandler} 
           qtyHandler={props.qtyHandler}/></div>
-        <div className='lg:flex flex-col hidden col-span-2'>
-          <CartButton cartItemCount={props.cartItemCount} removeAllOfSame={props.removeAllOfSame} addOne={props.addOne} total={props.total} qtyHandler={props.qtyHandler} removeFromCart={props.removeFromCart} inventory={props.inventory} addToCart={props.addToCart}/>
+        <div className='md:flex md:col-span-2 lg:col-span-2 flex-col hidden'>
+          <CartButton 
+          cartItemCount={props.cartItemCount} 
+          removeAllOfSame={props.removeAllOfSame} 
+          addOne={props.addOne} total={props.total} 
+          qtyHandler={props.qtyHandler} 
+          removeFromCart={props.removeFromCart} 
+          inventory={props.inventory} 
+          addToCart={props.addToCart}/>
         </div>
       </div>
   </div>

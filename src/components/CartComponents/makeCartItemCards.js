@@ -7,7 +7,7 @@ const MakeCartItemCardsForCart = (props) => {
   let itemCards =[]
   manipulableInventory.map(element => {
   if (element.numberInCart > 0) {
-    itemCards.push(<div className = 'hover:border-2 hover:border-indigo-400 border-2 col-start-3 col-span-3 justify-center shadow-lg shadow-indigo-400 py-2 w-3/4 font-semibold gap-2 rounded-lg'>
+    itemCards.push(<div className = 'hover:border-2 hover:border-indigo-400 border-2 col-start-3 col-span-3 justify-center shadow-lg shadow-indigo-400 px-5 py-2 w-3/4 font-semibold gap-2 rounded-lg'>
     <div className='flex justify-center'><img className='rounded h-1/2 w-2/3' src={element.imgSrc} alt='product'></img></div>
     <div className ='flex justify-center'>{element.name}</div>
     <div className='flex justify-center'>${element.price}</div>

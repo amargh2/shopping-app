@@ -28,7 +28,7 @@ const ProductDisplay = (props) => {
   }
 
   return (
-      <div className = 'grid lg:grid-cols-4 grid-cols-2 gap-4'>
+      <div className = 'grid lg:grid-cols-4 grid-cols-2 gap-4 pt-2 pb-10'>
         {listTheProducts(products2)}
       </div>
   )
