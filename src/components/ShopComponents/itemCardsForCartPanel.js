@@ -1,26 +1,44 @@
 import React from 'react'
 import SelectQuantity from './QuantitySelector'
-
+import { ArrowDownIcon } from '@heroicons/react/solid'
+import { ArrowUpIcon } from '@heroicons/react/solid'
+import { TrashIcon } from '@heroicons/react/solid'
 const MakeCartItemCardsForCartPanel = (props) => {
   const manipulableInventory = props.inventory.map(element=>element)
   let itemCards =[]
   manipulableInventory.map(element => {
   if (element.numberInCart > 0) {
-    itemCards.push(<div className = 'hover:border-2 hover:border-indigo-400 border-2 justify-center flex flex-col shadow-lg shadow-indigo-400 px-2 py-2 font-semibold gap-2 rounded-lg'>
-    <div className='flex justify-center'><img className='rounded h-40 w-40' src={element.imgSrc} alt='product'></img></div>
-    <div className="flex justify-evenly">
-      <div className ='flex justify-center'>{element.name}</div>
-      <div className='flex justify-center'>${element.price}</div>
-      <div className='flex justify-center'>{element.numberInCart}</div>
-      <div className='flex justify-center'>
-        <button id={element.id} onClick={(event) => props.removeFromCart(event.target.id)}>x</button>
-        <button id={element.id} onClick={(event) => props.addToCart(event.target.id)}><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M11 20V7.825l-5.6 5.6L4 12l8-8 8 8-1.4 1.425-5.6-5.6V20Z"/></svg></button>
+    itemCards.push(
+    <div key={element.id}>
+      <div className = 'hover:border-2 hover:border-indigo-400 border-2 justify-center flex flex-col shadow-lg shadow-indigo-400 px-2 py-2 font-semibold gap-2 rounded-lg'>
+      <div className='flex justify-center'><img className='rounded h-40 w-40' src={element.imgSrc} alt='product'></img></div>
+      <div className="flex flex-col justify-evenly">
+        <div className ='flex justify-center'>{element.name}x{element.numberIncart}, ${element.price} each</div>
+      
+        <div className='flex justify-center'>{element.numberInCart}</div>
+        <div className='flex gap-2 justify-center'>
+          <button id={element.id}
+          onClick={() => props.removeFromCart(element.id)}
+          className='hover:bg-gray-300 rounded-lg'>
+            <ArrowDownIcon className='h-4'/>
+          </button>
+          <button id={element.id}
+          onClick={() => props.addOne(element.id)}
+          className='rounded-lg hover:bg-gray-300'>
+            <ArrowUpIcon className='h-4'/>
+          </button>
+          <button id={element.id}
+          onClick={() => props.removeAllOfSame(element.id)}
+          className='rounded-lg hover:bg-gray-300'>
+            <TrashIcon className='h-4'/>
+          </button>
+        </div>
       </div>
-    </div>
-  </div>)
+        </div>
+    </div>)
   }
 })
-  return (<div className='lg:px-10 justify-center'>{itemCards}</div>)
+  return (<div className='lg:px-10 grid gap-4 justify-center'>{itemCards}</div>)
 }
 
 export default MakeCartItemCardsForCartPanel

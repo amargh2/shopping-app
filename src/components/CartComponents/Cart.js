@@ -16,15 +16,17 @@ const Cart = (props) => {
             <MakeCartItemCards
             inventory={props.inventory}
             total={props.total}
+            removeAllOfSame={props.removeAllOfSame}
             removeFromCart={props.removeFromCart}
-            addToCart={props.addToCartHandler}/>
+            addToCart={props.addToCart}/>
           </div>
           <div className='col-start-6 col-span-2 row-start-1'>
             <TotalDisplay
             total={props.total}
             inventory={props.inventory}
             removeFromCart={props.removeFromCart}
-            addToCart={props.addToCartHandler}/>
+            removeAllOfSame={props.removeAllofSame}
+            addToCart={props.addToCart}/>
           </div>
       
       

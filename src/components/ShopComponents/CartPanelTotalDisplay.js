@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const CartPanelTotalDisplay = (props) =>  (   
-  <div className='py-10 col-start-6 px-3 rounded-lg shadow-sm shadow-indigo-400 row-start-1 row-span-full border-2 font-medium flex justify-center flex-col'>
+  <div className='py-10 col-start-6 px-3 rounded-lg gap-2 sticky shadow-sm shadow-indigo-400 row-start-1 row-span-full border-2 font-medium flex justify-center flex-col'>
     <ul className='flex-col justify-center'>
     {props.inventory.map(item => {
       if (item.numberInCart > 0) {
-        return (<li className='flex justify-center'>{item.name}, ${item.price} x {item.numberInCart}</li>)
+        return (<li key={item.id} className='flex justify-center'>{item.name}, ${item.price} x {item.numberInCart}</li>)
       }
     })
     }

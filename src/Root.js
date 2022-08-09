@@ -11,13 +11,16 @@ import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid'
 
 const Root = () => {
+  const [numberSelected, setNumberSelected] = useState(1)
+  
   //defining inventory (could probably export this somewhere)
   const [inventory, setInventory] = useState([
     {name: 'Amethyst',
      price: 50,
      id: '1',
      imgSrc: `images/amethyst.jpg`,
-     numberInCart:0
+     numberInCart:0,
+     numberSelected:1
      //stock could go here
     },
     
@@ -25,7 +28,8 @@ const Root = () => {
      price: 25,
      id: '2',
      imgSrc:`images/tigerseye.jpg`,
-     numberInCart:0
+     numberInCart:0,
+     numberSelected:1
     },
     
     {name: 'Tourmeline',
@@ -33,41 +37,47 @@ const Root = () => {
      id: '3',
      imgSrc: `images/tourmaline.jpg`,
      numberInCart:0,
+     numberSelected:1
     },
     
      {name: 'Jade',
      price: 30,
      id: '4',
      imgSrc:`images/jade.jpg`,
-     numberInCart:0
+     numberInCart:0,
+     numberSelected:1
     },
     
     {name: 'Onyx',
      price: 25,
      id: '5',
      imgSrc:`images/tigerseye.jpg`,
-     numberInCart:0
+     numberInCart:0,
+     numberSelected:1
     },
     
     {name: 'Garnet',
      price: 25,
      id: '6',
      imgSrc:`images/amethyst.jpg`,
-     numberInCart:0
+     numberInCart:0,
+     numberSelected:1
     },
 
       {name: "Je ne ce'st pas",
       price: 10,
       id: '7',
       imgSrc:`images/tigerseye.jpg`,
-      numberInCart:0
+      numberInCart:0,
+      numberSelected:1
       },
 
       {name: 'Garnet',
       price: 25,
       id: '8',
       imgSrc:`images/tigerseye.jpg`,
-      numberInCart:0
+      numberInCart:0,
+      numberSelected:1
       },
 
       {name: 'Rose Quartz',
@@ -75,8 +85,21 @@ const Root = () => {
       id:'9',
       imgSrc:'images/tigerseye.jpg',
       numberInCart:0,
+      numberSelected:1
     }
   ])
+
+  const qtyHandler = (id, value) => {
+    const newInventory = inventory.map(item => item);
+    newInventory.forEach(item => {
+      if(id === item.id) {
+        item.numberSelected = parseInt(value);
+      }
+    })
+    setInventory(newInventory)
+    console.log('event occuurrreedd')
+    console.log(newInventory)
+  }
   
   //item sorter for sidebar component (in /PageComponents)
   const sortItemsByPrice = (choice) => {
@@ -114,22 +137,48 @@ const Root = () => {
     
     newInventory.forEach(item => {
       if (item.id === id){
-        const newTotal = cartTotal + item.price
+        const newTotal = cartTotal + item.price * item.numberSelected
         updateTotal(newTotal)
-        item.numberInCart = item.numberInCart+1
+        item.numberInCart = item.numberInCart+item.numberSelected
       }
       setInventory(newInventory)
     })
   }
 
-
-  //deletes item from cart (passed to Cart)
-  const removeFromCartHandler = (id) => {
+  const addOneMoreItem = (id) => {
     const newInventory = inventory.map(item => item)
     newInventory.forEach(item => {
       if (item.id === id) {
+        const newTotal = cartTotal + item.price;
+        updateTotal(newTotal);
+        item.numberInCart = item.numberInCart + 1
+      }
+    })
+  }
+
+  //deletes item from cart (passed to Cart)
+  const removeFromCartHandler = (id) => {
+    console.log(`id = ${id}`)
+    console.log('clicked')
+    const newInventory = inventory.map(item => item)
+    newInventory.forEach(item => {
+      if (item.id === id) {
+        console.log(item.name)
         item.numberInCart = item.numberInCart - 1
         const newTotal = cartTotal - item.price
+        updateTotal(newTotal)
+      }
+    })
+    console.log(newInventory)
+    setInventory(newInventory)
+  }
+
+  const removeAllOfSameItem = (id) => {
+    const newInventory = inventory.map(item => item);
+    newInventory.forEach(item => {
+      if (item.id === id) {
+        const newTotal = cartTotal - item.numberInCart * item.price
+        item.numberInCart = 0
         updateTotal(newTotal)
       }
     })
@@ -141,8 +190,8 @@ const Root = () => {
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage/>} />
-      <Route path='shop' element={<Shop total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
-      <Route path='cart' element={<Cart total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
+      <Route path='shop' element={<Shop addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} qtyHandler={qtyHandler} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
+      <Route path='cart' element={<Cart addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
     </Routes>
   </BrowserRouter>
   )
