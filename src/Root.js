@@ -10,11 +10,8 @@ import Shop from './components/ShopComponents/Shop'
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid'
 
-const Root = () => {
-  const [numberSelected, setNumberSelected] = useState(1)
-  
-  //defining inventory (could probably export this somewhere)
-  const [inventory, setInventory] = useState([
+const Root = () => {  
+  const cleanInventory = [
     {name: 'Amethyst',
      price: 50,
      id: '1',
@@ -87,7 +84,10 @@ const Root = () => {
       numberInCart:0,
       numberSelected:1
     }
-  ])
+  ]
+
+  //defining inventory (could probably export this somewhere)
+  const [inventory, setInventory] = useState(cleanInventory)
 
   const cartItemCount = () => {
     let total = 0;
@@ -197,14 +197,39 @@ const Root = () => {
     })
     setInventory(newInventory)
   }
+
+  const emptyCart = () => {
+    const newInv = inventory.map(item=> item);
+    setInventory(cleanInventory);
+    updateTotal(0) 
+  }
   
   return (
   //routing
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage cartItemCount = {cartItemCount}/>} />
-      <Route path='shop' element={<Shop cartItemCount={cartItemCount} addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} qtyHandler={qtyHandler} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler} clickHandler = {addToCartHandler} sort = {sortItemsByPrice}/>} />
-      <Route path='cart' element={<Cart cartItemCount={cartItemCount} addOne={addOneMoreItem} removeAllOfSame={removeAllOfSameItem} total={cartTotal} inventory={inventory} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}/>} />
+      <Route path='shop' element={<Shop 
+        cartItemCount={cartItemCount} 
+        addOne={addOneMoreItem} 
+        removeAllOfSame={removeAllOfSameItem} 
+        total={cartTotal} inventory={inventory} 
+        qtyHandler={qtyHandler} 
+        removeFromCart={removeFromCartHandler} 
+        addToCart={addToCartHandler} 
+        clickHandler = {addToCartHandler} 
+        sort = {sortItemsByPrice}
+        emptyCart={emptyCart}/>} />
+      <Route path='cart' 
+      element={
+        <Cart emptyCart={emptyCart} 
+        cartItemCount={cartItemCount} 
+        addOne={addOneMoreItem} 
+        removeAllOfSame={removeAllOfSameItem} 
+        total={cartTotal} 
+        inventory={inventory} 
+        removeFromCart={removeFromCartHandler} 
+        addToCart={addToCartHandler}/>} />
     </Routes>
   </BrowserRouter>
   )

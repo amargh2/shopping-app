@@ -26,7 +26,8 @@ const Cart = (props) => {
             inventory={props.inventory}
             removeFromCart={props.removeFromCart}
             removeAllOfSame={props.removeAllofSame}
-            addToCart={props.addToCart}/>
+            addToCart={props.addToCart}
+            emptyCart={props.emptyCart}/>
           </div>
       
       
