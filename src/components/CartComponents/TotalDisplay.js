@@ -11,7 +11,7 @@ const TotalDisplay = (props) =>  (
     }
     </ul>
     <div className='flex justify-center'>
-      <div className='flex justify-center'>Total: {props.total}</div>
+      <div className='flex justify-center'>Total: ${props.total}</div>
     </div>
     <div className = 'flex justify-center gap-2'>
       <Link to='/checkout'><button className='ring-2 ring-cyan-200 hover:ring-2 hover:ring-cyan-400 rounded-lg px-2'>Checkout</button></Link> 

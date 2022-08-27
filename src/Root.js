@@ -2,12 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/PageComponents/HomePage';
 import Cart from './components/CartComponents/Cart'
 import Shop from './components/ShopComponents/Shop'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CheckoutPage from './components/CheckoutPageComponents/CheckoutPage';
+import './App.css'
 const Root = () => {  
   const cleanInventory = [
     {name: 'Amethyst',
-     price: 50,
+     price: 10,
      id: '1',
      imgSrc: `images/amethyst.jpg`,
      numberInCart:0,
@@ -16,25 +17,25 @@ const Root = () => {
     },
     
     {name: "Tiger's Eye",
-     price: 25,
+     price: 12,
      id: '2',
      imgSrc:`images/tigerseye.jpg`,
      numberInCart:0,
      numberSelected:1
     },
     
-    {name: 'Tourmeline',
-     price: 40,
+    {name: 'Lapis Lazuli',
+     price: 12,
      id: '3',
-     imgSrc: `images/tourmaline.jpg`,
+     imgSrc: `images/lapislazuli.jpg`,
      numberInCart:0,
      numberSelected:1
     },
     
-     {name: 'Jade',
+     {name: 'Malachite',
      price: 30,
      id: '4',
-     imgSrc:`images/jade.jpg`,
+     imgSrc:`images/malachite.jpg`,
      numberInCart:0,
      numberSelected:1
     },
@@ -42,31 +43,31 @@ const Root = () => {
     {name: 'Onyx',
      price: 25,
      id: '5',
-     imgSrc:`images/tigerseye.jpg`,
+     imgSrc:`images/onyx.jpg`,
      numberInCart:0,
      numberSelected:1
     },
     
-    {name: 'Garnet',
-     price: 25,
+    {name: 'Red Jasper',
+     price: 10,
      id: '6',
-     imgSrc:`images/amethyst.jpg`,
+     imgSrc:`images/red_jasper.jpg`,
      numberInCart:0,
      numberSelected:1
     },
 
-      {name: "Je ne ce'st pas",
+      {name: "Carnelian",
       price: 10,
       id: '7',
-      imgSrc:`images/tigerseye.jpg`,
+      imgSrc:`images/carnelian.jpg`,
       numberInCart:0,
       numberSelected:1
       },
 
-      {name: 'Garnet',
+      {name: 'Crystal Quartz',
       price: 25,
       id: '8',
-      imgSrc:`images/tigerseye.jpg`,
+      imgSrc:`images/download.jpeg`,
       numberInCart:0,
       numberSelected:1
       },
@@ -74,10 +75,36 @@ const Root = () => {
       {name: 'Rose Quartz',
       price: 15,
       id:'9',
-      imgSrc:'images/tigerseye.jpg',
+      imgSrc:'images/rosequartz.jpg',
       numberInCart:0,
       numberSelected:1
-    }
+    },
+
+    {name: 'Topaz Obelisk',
+    price: 150,
+    id: '10',
+    imgSrc: 'images/topaz.jpg',
+    numberInCart: 0,
+    numberSelected: 1
+    },
+
+    {name: 'Blue Geode',
+    price: 150,
+    id: '11',
+    imgSrc: 'images/geode1.jpeg',
+    numberInCart: 0,
+    numberSelected: 1
+    },
+
+    {name: 'Amethyst Geode',
+    price: 150,
+    id: '12',
+    imgSrc: 'images/geode2.jpg',
+    numberInCart: 0,
+    numberSelected: 1
+    },
+    
+
   ]
 
   //defining inventory (could probably export this somewhere)
@@ -99,8 +126,6 @@ const Root = () => {
       }
     })
     setInventory(newInventory)
-    console.log('event occuurrreedd')
-    console.log(newInventory)
   }
   
   //item sorter for sidebar component (in /PageComponents)
@@ -165,19 +190,14 @@ const Root = () => {
 
   //deletes item from cart (passed to Cart)
   const removeFromCartHandler = (id) => {
-    console.log(`id = ${id}`)
-    console.log('clicked')
     const newInventory = inventory.map(item => item)
     newInventory.forEach(item => {
       if (item.id === id) {
-        console.log(item.name)
         item.numberInCart = item.numberInCart - 1
         const newTotal = cartTotal - item.price
         updateTotal(newTotal)
       }
     })
-    console.log(newInventory)
-    setInventory(newInventory)
   }
 
   const removeAllOfSameItem = (id) => {

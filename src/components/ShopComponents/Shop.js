@@ -2,8 +2,6 @@ import React from 'react';
 import Header from '../PageComponents/Header';
 import NavBar from '../PageComponents/NavBar'
 import ProductDisplay from './ProductDisplay';
-import SideBar from '../SideBar'
-import CartSidePanel2 from './cartSidePanel2';
 import SortButton from './SortButton';
 import CartButton from './CartButton';
 const Shop = (props) => {
