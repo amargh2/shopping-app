@@ -17,7 +17,7 @@ const MakeCartItemCardsForCartPanel = (props) => {
             <button id={element.id}
             onClick={() => props.removeFromCart(element.id)}
             className='hover:bg-gray-300 rounded-lg'>
-              <ArrowDownIcon className='h-4'/>
+              <ArrowDownIcon className='h-4 hover:bg-slate-100'/>
             </button>
             <button id={element.id}
             onClick={() => props.addOne(element.id)}
