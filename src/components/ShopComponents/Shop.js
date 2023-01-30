@@ -14,12 +14,12 @@ const Shop = (props) => {
       <div className='bottom-0 fixed inset-x-0 bg-white md:relative'>
         <NavBar cartItemCount={props.cartItemCount}/>
       </div>
-      <div className='lg:grid md:grid grid-cols-10 gap-4 py-4'>
-        <div className='col-span-2 lg:col-span-1 border-r-2 border-t-2 border-cyan-300 shadow-lg rounded-md justify-center'>
+      <div className='lg:grid md:grid grid-cols-12 gap-4 py-4'>
+        <div className='col-span-2 md:col-span-3 lg:col-span-2 shadow-lg rounded-md justify-center md:border-r-2 md:border-cyan-200 md:border-t-2'>
           <SortButton
           sort = {props.sort}/>
         </div>
-        <div className='lg:col-span-7 md:col-span-6 col-span-2 lg:px-0 px-2'>
+        <div className='lg:col-span-8 md:col-span-7 col-span-2 lg:px-0 px-2'>
           <ProductDisplay
           products = {props.inventory}
           updateInventory = {props.setInventory}
