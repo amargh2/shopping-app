@@ -3,7 +3,7 @@ import SortOptions from "./SortOptions";
 import { SortDescendingIcon } from '@heroicons/react/solid';
 
 const SortButton = (props) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   return (
     <div className='py-2'>
       <div className='flex justify-center'>

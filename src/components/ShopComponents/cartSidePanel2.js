@@ -1,11 +1,9 @@
 import React from 'react';
 import ItemCardsForCartPanel from './itemCardsForCartPanel.js';
-import TotalDisplay from '../CartComponents/TotalDisplay';
-import { ShoppingCartIcon } from '@heroicons/react/outline';
 import CartPanelTotalDisplay from './CartPanelTotalDisplay.js';
 export default function CartSidePanel2(props){ 
   return (  
-  <div className='px-4 flex justify-center rounded-lg py-4'>
+  <div className='flex justify-center rounded-lg py-4'>
     <div className='flex justify-center flex-col gap-3'>
       <div className='grid grid-cols-6 gap-4'>
         <div className='lg:col-start-2 flex lg:col-span-4'>

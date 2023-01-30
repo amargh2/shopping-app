@@ -1,10 +1,23 @@
 import React from 'react';
-import { Link, Navigate, Outlet } from 'react-router-dom'
-
+import { Link, Navigate, Outlet} from 'react-router-dom'
+import {GiCrystalGrowth} from 'react-icons/gi'
 const navBar = (props) => {
   return(
-    <div className='shadow-lg'>
-      <div className='py-2 flex justify-center'>
+    <div className='shadow-lg lg:grid grid-cols-3'>
+      <Link to='/'>
+      <div className='items-center align-middle hidden lg:flex'>
+            <div>
+              <GiCrystalGrowth size={40} color={'#22d3ee'}/>
+            </div>
+            <div>
+              <p className='text-2xl'>Good Vibrations</p>
+            </div>
+            <div>
+              <GiCrystalGrowth size={40} color={'#22d3ee'}/>
+            </div>
+      </div>
+      </Link>
+      <div className='py-2 flex justify-center align-middle'>
         <div className='px-2'>
           <Link to='/'> 
           <button className='bg-white px-4 ring-2 ring-cyan-200 rounded-lg justify-center hover:ring-2 hover:ring-cyan-400 text-xl'>
@@ -36,6 +49,10 @@ const navBar = (props) => {
             </button>
             </Link>
             </div>
+            
+        </div>
+        <div className='flex'>
+        
         </div>
         <Outlet></Outlet>
       </div>

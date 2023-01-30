@@ -8,14 +8,18 @@ const Shop = (props) => {
   
   return (
   <div>
-      <div><Header/></div>
-      <div className='bottom-0 fixed inset-x-0 py-2 bg-white md:relative'><NavBar cartItemCount={props.cartItemCount}/></div>
+      <div className='justify-center lg:hidden sm:flex'>
+        <Header></Header>
+      </div>
+      <div className='bottom-0 fixed inset-x-0 bg-white md:relative'>
+        <NavBar cartItemCount={props.cartItemCount}/>
+      </div>
       <div className='lg:grid md:grid grid-cols-10 gap-4 py-4'>
         <div className='col-span-2 lg:col-span-1 border-r-2 border-t-2 border-cyan-300 shadow-lg rounded-md justify-center'>
           <SortButton
           sort = {props.sort}/>
         </div>
-        <div className='lg:col-span-7 md:col-span-6 col-span-2 lg:px-0 py-2'>
+        <div className='lg:col-span-7 md:col-span-6 col-span-2 lg:px-0 px-2'>
           <ProductDisplay
           products = {props.inventory}
           updateInventory = {props.setInventory}

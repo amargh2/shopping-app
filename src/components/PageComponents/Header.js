@@ -1,10 +1,25 @@
 import React from "react";
+import {GiCrystalGrowth} from 'react-icons/gi'
+import { Link } from "react-router-dom";
+
+//the header is visible in small mobile view
 
 const Header = () => {
   return (
-    <div className="bg-cyan-400 flex justify-center py-6 text-white font-bold text-4xl">
-      <h1>Crystal Shop</h1>
-    </div>
+    
+            <Link to='/'>
+              <div className='justify-center items-center items-middle align-middle flex'>
+              <div>
+                <GiCrystalGrowth size={40} color={'#22d3ee'}/>
+              </div>
+              <div className='p-1'>
+                <p className='text-2xl'>Good Vibrations</p>
+              </div>
+              <div>
+                <GiCrystalGrowth size={40} color={'#22d3ee'}/>
+              </div>
+              </div>
+            </Link>
   )
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { ArrowDownIcon } from '@heroicons/react/solid'
 import { ArrowUpIcon } from '@heroicons/react/solid'
 import { TrashIcon } from '@heroicons/react/solid'
+
 const MakeCartItemCardsForCartPanel = (props) => {
   const manipulableInventory = props.inventory.map(element=>element)
   let itemCards =[]

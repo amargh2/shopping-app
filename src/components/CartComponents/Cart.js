@@ -39,7 +39,6 @@ const Cart = (props) => {
   
   return (
       <div>
-        <Header/>
         <NavBar cartItemCount={props.cartItemCount}/>
           <div>
               <div>{chooseOutput()}</div>
