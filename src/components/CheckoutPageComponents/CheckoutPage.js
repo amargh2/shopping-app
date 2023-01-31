@@ -8,6 +8,9 @@ const CheckoutPage = (props) => {
   if(props.cartItemCount() === 0) {
     return (
       <div>
+        <div className='justify-center lg:hidden sm:flex'>
+          <Header></Header>
+        </div> 
         <NavBar cartItemCount={props.cartItemCount}/>
         <EmptyCartNotification/>
       </div>
@@ -15,10 +18,10 @@ const CheckoutPage = (props) => {
   } if (props.cartItemCount() > 0) {
     return (
       <div className='grid grid-cols-12'>
+        <div className='col-span-full'>
         <div className='justify-center lg:hidden sm:flex'>
           <Header></Header>
         </div> 
-        <div className='col-span-full'>
           <NavBar cartItemCount={props.cartItemCount}/>
         </div>
         <div className='col-span-full'>
