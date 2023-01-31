@@ -14,7 +14,10 @@ const CheckoutPage = (props) => {
     )
   } if (props.cartItemCount() > 0) {
     return (
-      <div className='grid grid-cols-2'>
+      <div className='grid grid-cols-12'>
+        <div className='justify-center lg:hidden sm:flex'>
+          <Header></Header>
+        </div> 
         <div className='col-span-full'>
           <NavBar cartItemCount={props.cartItemCount}/>
         </div>

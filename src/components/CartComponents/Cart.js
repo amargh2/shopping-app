@@ -46,7 +46,7 @@ const Cart = (props) => {
   
   return (
       <div>
-      <div className='justify-center lg:hidden sm:flex'>
+      <div className='justify-center items-center lg:hidden sm:flex'>
         <Header></Header>
       </div>        
       <NavBar cartItemCount={props.cartItemCount}/>
