@@ -1,9 +1,8 @@
-import Form from "./Form";
 import Header from "../PageComponents/Header";
 import NavBar from "../PageComponents/NavBar";
 import EmptyCartNotification from "./emptyCartPage";
-import FormPage from "./FormPage";
-
+import Form from "./Form";
+import CartPanel from "./CartPanel";
 const CheckoutPage = (props) => {
   if(props.cartItemCount() === 0) {
     return (
@@ -17,26 +16,25 @@ const CheckoutPage = (props) => {
     )
   } if (props.cartItemCount() > 0) {
     return (
-      <div className='grid grid-cols-12'>
-        <div className='col-span-full'>
+      <div className='md:grid grid-cols-12'>
+        <div className='col-span-full p-2'>
         <div className='justify-center lg:hidden sm:flex'>
           <Header></Header>
         </div> 
           <NavBar cartItemCount={props.cartItemCount}/>
         </div>
-        <div className='col-span-full'>
-          <FormPage
-          cartItemCount={props.cartItemCount}
-          addOne={props.addOneMoreItem}
-          removeAllOfSame={props.removeAllOfSame}
-          total={props.total}
-          inventory={props.inventory}
-          qtyHandler={props.qtyHandler}
-          removeFromCart={props.removeFromCart}
-          addToCart={props.addToCart}
-          clickHandler = {props.addToCart}
-          sort = {props.sortItemsByPrice}
-          emptyCart={props.emptyCart}/>
+        <div className='col-span-6'>
+          <CartPanel
+                cartItemCount={props.cartItemCount}
+                removeAllOfSame={props.removeAllOfSame}
+                addOne={props.addOne} total={props.total}
+                qtyHandler={props.qtyHandler}
+                removeFromCart={props.removeFromCart}
+                inventory={props.inventory}
+                addToCart={props.addToCart}/>
+        </div>
+        <div className='col-span-4'>
+          <Form></Form>
         </div>
       </div>
     )
