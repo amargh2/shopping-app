@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 const Form = () => {
+  //leaving the controlled form stuff here for now in case i come back and add validation
+  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
